@@ -68,7 +68,15 @@ class Board
 
     all_squares = all_squares.select { |pos| pos[0].between?(0,@size-1) }
     all_squares.select { |pos| pos[1].between?(0,@size-1) }
+  end
 
+  def process_flag(pos)
+    self[pos].identity = :flag
+    self[pos].reveal
+  end
+
+  def process_guess(pos)
+    self[pos].reveal
   end
 
   def render
